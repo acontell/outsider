@@ -1,24 +1,30 @@
 {
-  "name": "outsider",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "test": "node_modules/.bin/mocha"
-  },
-  "dependencies": {
-    "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "express": "~4.13.4",
-    "hjs": "~0.0.6",
-    "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
-  },
-  "devDependencies": {
-    "mocha": ">= 2.3.1",
-    "chai": ">= 3.2.0",
-    "chai-http": ">= 1.0.0",
-    "should": ">= 0.0.1"
-  }
+    "name": "outsider",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "prelint": "node_modules/.bin/jscs .",
+        "lint": "node_modules/.bin/jshint --exclude ./node_modules .",
+        "start": "node ./bin/www",
+        "pretest": "npm run lint",
+        "test": "node_modules/.bin/mocha"
+    },
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "cookie-parser": "^1.4.3",
+        "debug": "^2.2.0",
+        "express": "^5.0.0-alpha.2",
+        "hjs": "0.0.6",
+        "mongoose": "^4.5.3",
+        "morgan": "^1.7.0",
+        "serve-favicon": "^2.3.0"
+    },
+    "devDependencies": {
+        "mocha": "^3.0.0-1",
+        "chai": "^3.5.0",
+        "chai-http": "^3.0.0",
+        "should": "^9.0.2",
+        "jscs": "^3.0.6",
+        "jshint": "^2.9.2"
+    }
 }
