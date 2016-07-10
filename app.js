@@ -1,6 +1,7 @@
 'use strict';
 
-var express = require('express'),
+var _ = require('lodash'),
+    express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
@@ -10,11 +11,13 @@ var express = require('express'),
     users = require('./routes/users'),
     mongoose = require('mongoose'),
     config = require('./config'),
+    testEnv = process.env.NODE_ENV === 'test',
+    log = testEnv ? _.identity : console.log,
     app = express();
 
 // *** mongoose *** ///
 mongoose.connect(config.mongoURI[app.settings.env], function (err) {
-    console.log(err ? 'Error connecting to the database. ' + err : 'Connected to Database: ' + config.mongoURI[app.settings.env]);
+    log(err ? 'Error connecting to the database. ' + err : 'Connected to Database: ' + config.mongoURI[app.settings.env]);
 });
 
 // view engine setup
@@ -23,7 +26,7 @@ app.set('view engine', 'hjs');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger('dev', testEnv ? {skip: _.constant(true)} : {}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

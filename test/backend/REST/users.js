@@ -11,12 +11,12 @@ describe('REST sercice: users', function () {
 
     beforeEach(function (done) {
         newUser = new UserModel(userValues);
-        helper.setEnvAndDropModel('test', UserModel, newUser.save.bind(newUser, done.bind(null)));
+        helper.dropModel(UserModel, newUser.save.bind(newUser, done.bind(null)));
         _.extend(userValues, {"_id": newUser.id});
     });
 
     afterEach(function (done) {
-        helper.setEnvAndDropModel('development', UserModel, done);
+        helper.dropModel(UserModel, done);
     });
 
     it('should list ALL users on /users GET', function (done) {
