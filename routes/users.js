@@ -1,11 +1,10 @@
 'use strict';
 
 var express = require('express'),
+    UserController = require('../db/controllers/user'),
     router = express.Router();
 
 /* GET users listing. */
-router.get('/', function (req, res) {
-    res.send('respond with a resource');
-});
+router.get('/', UserController.getAll);
 
 module.exports = router;

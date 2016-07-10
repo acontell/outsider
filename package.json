@@ -28,6 +28,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "should": "^9.0.2",
+    "should-http": "0.0.4",
     "jscs": "^3.0.6",
     "jshint": "^2.9.2",
     "cucumber": "^1.2.1",
