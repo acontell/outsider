@@ -14,6 +14,9 @@ var UserModel = require('../models/user'),
         },
         findByIdAndUpdate: function (req, res) {
             return UserModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, toJson(res));
+        },
+        findByIdAndRemove: function (req, res) {
+            return UserModel.findByIdAndRemove(req.params.id, req.body, toJson(res));
         }
     };
 

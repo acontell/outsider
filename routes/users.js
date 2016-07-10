@@ -16,4 +16,7 @@ router.post('/', UserController.create);
 /* PUT /users/:id */
 router.put('/:id', UserController.findByIdAndUpdate);
 
+/* DELETE /users/:id */
+router.delete('/:id', UserController.findByIdAndRemove);
+
 module.exports = router;
