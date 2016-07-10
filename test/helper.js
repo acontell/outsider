@@ -11,8 +11,7 @@ var _ = require('lodash'),
             });
             callback();
         },
-        setEnvAndDropModel: function (env, model, callback) {
-            process.env.NODE_ENV = env;
+        dropModel: function (model, callback) {
             model.collection.drop();
             callback();
         }
@@ -20,5 +19,6 @@ var _ = require('lodash'),
 
 require('should-http');
 helper.chai.use(require('chai-http')).should();
+process.env.NODE_ENV = 'test';
 
 module.exports = helper;
