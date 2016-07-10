@@ -5,6 +5,9 @@ var express = require('express'),
     router = express.Router();
 
 /* GET users listing. */
-router.get('/', UserController.getAll);
+router.get('/', UserController.find);
+
+/* GET user by id. */
+router.get('/:id', UserController.findById);
 
 module.exports = router;
