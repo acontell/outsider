@@ -8,7 +8,14 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./routes/index'),
     users = require('./routes/users'),
+    mongoose = require('mongoose'),
+    config = require('./config'),
     app = express();
+
+// *** mongoose *** ///
+mongoose.connect(config.mongoURI[app.settings.env], function (err) {
+    console.log(err ? 'Error connecting to the database. ' + err : 'Connected to Database: ' + config.mongoURI[app.settings.env]);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
