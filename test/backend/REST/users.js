@@ -69,5 +69,14 @@ describe('REST sercice: users', function () {
             });
     });
 
-    it('should delete a SINGLE user on /user/<id> DELETE');
+    it('should delete a SINGLE user on /user/<id> DELETE', function (done) {
+        helper.chai.request(server)
+            .delete('/users/' + newUser.id)
+            .end(function (err, res) {
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.an('object');
+                helper.testProperties(res.body, userValues, done);
+            });
+    });
 });
