@@ -1,4 +1,6 @@
+test/backend
 --require should
 --reporter spec
 --ui bdd
 --colors
+--recursive
