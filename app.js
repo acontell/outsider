@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('lodash'),
+var _ = require('util/functional'),
     express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
