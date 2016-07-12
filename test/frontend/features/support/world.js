@@ -8,7 +8,7 @@ function World() {
     this.flowHandler = new FlowHandler();
 
     this.waitForPageToBeLoaded = function () {
-        return this.driver.wait.isElementDisplayed(this.driver.By.css('.test'));
+        return this.driver.wait.isElementDisplayed('.test');
     };
 }
 
