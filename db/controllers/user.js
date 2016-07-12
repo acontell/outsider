@@ -1,7 +1,7 @@
 'use strict';
 
 var UserModel = require('../models/user'),
-    toJson = require('../../util/db_helper').toJson,
+    toJson = require('util/db_helper').toJson,
     api = {
         find: function (req, res) {
             return UserModel.find(toJson(res));

@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('./util/functional'),
+var _ = require('util/functional'),
     express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
