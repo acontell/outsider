@@ -1,7 +1,8 @@
 'use strict';
 
-var _ = require('lodash'),
-    helper = require('../../helper'),
+var _ = require('../../../util/functional'),
+    helper = require('../../../util/be_tests_helper'),
+    chai = helper.chai,
     server = require('../../../app'),
     UserModel = require('../../../db/models/user'),
     userValues = {name: 'bat', password: 'man', created: '2016-09-01T00:00:00.000Z'},
@@ -21,7 +22,7 @@ describe('REST sercice: users', function () {
     });
 
     it('should list ALL users on /users GET', function (done) {
-        helper.chai.request(server)
+        chai.request(server)
             .get('/users')
             .end(function (err, res) {
                 res.should.have.status(200);
@@ -32,7 +33,7 @@ describe('REST sercice: users', function () {
     });
 
     it('should list a SINGLE user on /user/<id> GET', function (done) {
-        helper.chai.request(server)
+        chai.request(server)
             .get('/users/' + newUser.id)
             .end(function (err, res) {
                 res.should.have.status(200);
@@ -43,7 +44,7 @@ describe('REST sercice: users', function () {
     });
 
     it('should add a SINGLE user on /users POST', function (done) {
-        helper.chai.request(server)
+        chai.request(server)
             .post('/users')
             .send(otherValues)
             .end(function (err, res) {
@@ -58,7 +59,7 @@ describe('REST sercice: users', function () {
     it('should update a SINGLE user on /user/<id> PUT', function (done) {
         var newData = {'name': 'super', '_id': newUser.id};
 
-        helper.chai.request(server)
+        chai.request(server)
             .put('/users/' + newUser.id)
             .send(_.pick(newData, 'name'))
             .end(function (err, res) {
@@ -70,7 +71,7 @@ describe('REST sercice: users', function () {
     });
 
     it('should delete a SINGLE user on /user/<id> DELETE', function (done) {
-        helper.chai.request(server)
+        chai.request(server)
             .delete('/users/' + newUser.id)
             .end(function (err, res) {
                 res.should.have.status(200);
