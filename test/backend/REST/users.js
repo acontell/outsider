@@ -1,7 +1,7 @@
 'use strict';
 
-var _ = require('util/functional'),
-    helper = require('util/be_tests_helper'),
+var _ = require('../../../util/functional'),
+    helper = require('../../../util/be_tests_helper'),
     chai = helper.chai,
     server = require('../../../app'),
     UserModel = require('../../../db/models/user'),

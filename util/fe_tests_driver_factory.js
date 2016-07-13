@@ -64,10 +64,10 @@ function ExtendedDriver(driver, webDriver) {
         };
         return memo;
     }, this), {});
-    
+
     // Decorator to transform a first parameter (must be a string) into a locator (useful in some methods).
     (function (context) {
-        _.each(_.pick(context, 'findElement', 'findElements'), function(method, key) {
+        _.each(_.pick(context, 'findElement', 'findElements'), function (method, key) {
             context[key] = function () {
                 var first = _.head(arguments),
                     locator = getLocatorFromString(first);
