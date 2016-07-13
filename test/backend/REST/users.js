@@ -1,10 +1,11 @@
 'use strict';
 
-var _ = require('util/functional'),
-    helper = require('util/be_tests_helper'),
+var root = process.cwd(),
+    _ = require(root + '/util/functional'),
+    helper = require(root + '/util/be_tests_helper'),
     chai = helper.chai,
-    server = require('../../../app'),
-    UserModel = require('../../../db/models/user'),
+    server = require(root + '/app'),
+    UserModel = require(root + '/db/models/user'),
     userValues = {name: 'bat', password: 'man', created: '2016-09-01T00:00:00.000Z'},
     otherValues = _.extend({}, userValues, {name: 'spider'}),
     newUser = null;

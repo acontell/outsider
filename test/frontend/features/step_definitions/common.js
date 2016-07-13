@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('util/functional'),
+var _ = require(process.cwd() + '/util/functional'),
     steps = function () {
         this.Given('I am on the "$page" page', function (page, callback) {
             this

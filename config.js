@@ -1,11 +1,19 @@
 'use strict';
 
-var config = {
+var _ = require('./util/functional'),
+    config = {
     mongoURI: {
         development: 'mongodb://localhost/outsider',
         test: 'mongodb://localhost/outsider-test'
     },
-    testServerURI: 'http://localhost:3000'
+    testServer: {
+        url: 'http://localhost',
+        port: 3000,
+        getScreenshotFilePath: function (scenarioName) {
+            var uniqueName = _.uniqueId(scenarioName.replace(/ /g, '_').substring(0, 20));
+            return process.cwd() + '/test/frontend/screenshots/' + uniqueName + '.png';
+        }
+    }
 };
 
 module.exports = config;

@@ -1,6 +1,6 @@
 'use strict';
 
-var driver = require('util/fe_tests_driver_factory'),
+var driver = require(process.cwd() + '/util/fe_tests_driver_factory'),
     FlowHandler = require('../flow/flow_handler');
 
 function World() {

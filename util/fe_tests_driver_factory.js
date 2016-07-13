@@ -27,6 +27,8 @@ function ExtendedDriver(driver, webDriver) {
 
     this.findElements = _.bind(driver.findElements, driver);
 
+    this.takeScreenshot = _.bind(driver.takeScreenshot, driver);
+
     this.isElementDisplayed = function (locator) {
         return this
                 .findElement(locator)
@@ -54,7 +56,7 @@ function ExtendedDriver(driver, webDriver) {
     };
 
     // Decorator to add a wait object that will define methods based on those already defined and adding to them a wait.
-    this.wait = _.reduce(_.omit(this, ['get', 'findElement', 'findElements']), _.bind(function (memo, method, key) {
+    this.wait = _.reduce(_.omit(this, ['takeScreenshot', 'get', 'findElement', 'findElements']), _.bind(function (memo, method, key) {
         var that = this;
         memo[key] = function () {
             var args = arguments;
@@ -64,10 +66,10 @@ function ExtendedDriver(driver, webDriver) {
         };
         return memo;
     }, this), {});
-    
+
     // Decorator to transform a first parameter (must be a string) into a locator (useful in some methods).
     (function (context) {
-        _.each(_.pick(context, 'findElement', 'findElements'), function(method, key) {
+        _.each(_.pick(context, 'findElement', 'findElements'), function (method, key) {
             context[key] = function () {
                 var first = _.head(arguments),
                     locator = getLocatorFromString(first);
