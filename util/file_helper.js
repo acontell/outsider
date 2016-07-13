@@ -4,7 +4,7 @@ var _ = require('./functional'),
     fs = require('fs'),
     fileUtils = {
         takeScreenshot: function (driver, pathToFile, callback) {
-            driver
+            return driver
                 .takeScreenshot()
                 .then(_.partial(this.savePng, pathToFile))
                 .then(callback);
